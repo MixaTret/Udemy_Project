@@ -1,19 +1,36 @@
-/* console.log(document.head); */
-/* console.log(document.documentElement); */
-/* console.log(document.body.childNodes); */
-/* console.log(document.body.firstChild);
-console.log(document.body.lastChild); */
-/* console.log(document.querySelector('#current').parentNode.parentNode); */
-/* console.log(document.querySelector('#current').parentElement); */
+'use strict';
 
-/* console.log(document.querySelector('[data-current="3"]').nextElementSibling); */
-/* console.log(document.body.firstElementChild); */
+const movieDB = {
+    movies: [
+        "Логан",
+        "Лига справедливости",
+        "Ла-ла лэнд",
+        "Одержимость",
+        "Скотт Пилигрим против..."
+    ]
+};
 
+const adv = document.querySelectorAll('.promo__adv img'),
+    poster = document.querySelector('.promo__bg'),
+    genre = poster.querySelector('.promo__genre'),
+    movieList = document.querySelector('.promo__interactive-list');
 
-for (let node of document.body.childNodes) {
-    if (node.nodeName == '#text') {
-        continue;
-    }
-    console.log(node);
+adv.forEach(item => {
+    item.remove();
+});
 
-}
+genre.textContent = 'драма';
+
+poster.style.backgroundImage = 'url("img/bg.jpg")';
+
+movieList.innerHTML = "";
+
+movieDB.movies.sort();
+
+movieDB.movies.forEach((film, i) => {
+    movieList.innerHTML += `
+        <li class="promo__interactive-item">${i + 1} ${film}
+            <div class="delete"></div>
+        </li>
+    `;
+});
