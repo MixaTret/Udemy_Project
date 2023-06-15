@@ -1,36 +1,38 @@
-'use strict';
+const btns = document.querySelectorAll('button'),
+    wrapper = document.querySelector('.btn-block');
 
-const movieDB = {
-    movies: [
-        "Логан",
-        "Лига справедливости",
-        "Ла-ла лэнд",
-        "Одержимость",
-        "Скотт Пилигрим против..."
-    ]
-};
+/* console.log(btns[0].classList.lenght); */
+/* console.log(btns[0].classList.item(1)); */
+/* console.log(btns[1].classList.add('red', 'jdngj')); */
+/* console.log(btns[0].classList.remove('blue')); */
+/* console.log(btns[0].classList.toggle('blue')); */
 
-const adv = document.querySelectorAll('.promo__adv img'),
-    poster = document.querySelector('.promo__bg'),
-    genre = poster.querySelector('.promo__genre'),
-    movieList = document.querySelector('.promo__interactive-list');
+/* if (btns[1].classList.contains('red')) {
+    console.log('red');
+} */
 
-adv.forEach(item => {
-    item.remove();
+btns[0].addEventListener('click', () => {
+    /*  if (!btns[1].classList.contains('red')) {
+         btns[1].classList.add('red');
+     } else {
+         btns[1].classList.remove('red');
+     } */
+    btns[1].classList.toggle('red');
 });
 
-genre.textContent = 'драма';
-
-poster.style.backgroundImage = 'url("img/bg.jpg")';
-
-movieList.innerHTML = "";
-
-movieDB.movies.sort();
-
-movieDB.movies.forEach((film, i) => {
-    movieList.innerHTML += `
-        <li class="promo__interactive-item">${i + 1} ${film}
-            <div class="delete"></div>
-        </li>
-    `;
+wrapper.addEventListener('click', (event) => {
+    if (event.target && event.target.matches("button.red")) {
+        console.log('hello');
+    }
 });
+/* btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        console.log('hello');
+    });
+});
+ */
+
+
+const btn = document.createElement('button');
+btn.classList.add('red');
+wrapper.append(btn);
